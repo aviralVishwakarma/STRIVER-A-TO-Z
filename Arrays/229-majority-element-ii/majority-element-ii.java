@@ -1,21 +1,48 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        int n = nums.length;
-        int count = 0 ;
-        Set<Integer> set = new HashSet<>();
-        for(int i = 0 ; i < n ; i++){
-            int el = nums[i];
-            for(int j = 0 ; j < n ; j++){
-                if(nums[j]==el){
-                    count++;
-                }
+        int count1 =0 ;
+        int count2 = 0 ;
+        int el1 = 0 ;
+        int el2 = 0 ;
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0 ; i < nums.length ; i++){
+            if(count1==0 && nums[i]!=el2){
+                count1=1;
+                el1=nums[i];
             }
-            if(count>(n/3)){
-                set.add(el);
+            else if(count2==0 && nums[i]!=el1){
+                count2=1;
+                el2=nums[i];
             }
-            count=0;
+            else if(nums[i]==el1){
+                count1++;
+            }
+            else if(nums[i]==el2){
+                count2++;
+            }
+            else{
+                count1--;
+                count2--;
+            }
         }
-        List<Integer> list = new ArrayList<>(set);
+        count1 = 0 ; 
+        count2 = 0 ;
+        for(int i = 0 ; i<nums.length ; i++){
+            if(nums[i]==el1){
+                count1++;
+            }
+            else if(nums[i]==el2){
+                count2++;
+            }
+        }
+        if(count1>(nums.length/3)){
+            list.add(el1);
+        }
+        if(count2>(nums.length/3)){
+            list.add(el2);
+        }
         return list ;
+    
     }
 }
+    
