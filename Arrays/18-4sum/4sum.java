@@ -6,10 +6,10 @@ class Solution {
             for (int j = i + 1; j < n; j++) {
                 Set<Integer> quad = new HashSet<>();
                 for (int k = j + 2; k < n; k++) {
-                    long t = (long) target -nums[i] - nums[j] - nums[k];
+                    long t = (long) target -nums[i] - nums[j] - nums[k]; // Since the array we got is of int so t should be int , that's why we checked weather it lies within the range of int or not below.
                     quad.add(nums[k - 1]);
                     if (t >= Integer.MIN_VALUE &&
-                            t <= Integer.MAX_VALUE && //Confusion 
+                            t <= Integer.MAX_VALUE && //Confusion
                             quad.contains((int) t)) {
 
                         List<Integer> list = new ArrayList<>(
