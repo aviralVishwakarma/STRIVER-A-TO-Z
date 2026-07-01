@@ -4,16 +4,16 @@ class Solution {
         int n = nums.length;
         List<List<Integer>> list = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) {
+            if (i > 0 && nums[i] == nums[i - 1]) {//Skip duplicate
                 continue;
             }
             for (int j = i + 1; j < n; j++) {
-                if (j > i + 1 && nums[j] == nums[j - 1])
+                if (j > i + 1 && nums[j] == nums[j - 1])//Skip duplicate
                     continue;
                 int k = j + 1;
                 int l = n - 1;
                 while (k < l) {
-                    long sum = (long) nums[i] + nums[j] + nums[k] + nums[l];
+                    long sum = (long) nums[i] + nums[j] + nums[k] + nums[l];//Out of range
                     if (sum==target) {
                         List<Integer> temp = new ArrayList<>(Arrays.asList(nums[i], nums[j], nums[k], nums[l]));
                         list.add(temp);
