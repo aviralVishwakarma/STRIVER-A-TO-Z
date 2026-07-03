@@ -1,3 +1,4 @@
+//Floor
 class Solution {
     public int findFloor(int[] arr, int x) {
         int l = 0 ;
@@ -17,3 +18,24 @@ class Solution {
         
     }
 }
+
+//Lower Bound
+class Solution {
+    public int lowerBound(int[] nums, int x) {
+       int l = 0 ;
+       int r = nums.length-1;
+       int ans = nums.length;
+       while(l<=r){
+        int m = (l+r)/2;
+        if(nums[m]>=x){
+            ans = m ;
+            r = m -1;
+        }
+        else{
+            l=m+1;
+        }
+       }
+       return ans;
+    }
+}
+
