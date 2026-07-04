@@ -3,7 +3,7 @@ class Solution {
         int l = 0 ;
         int r = nums.length-1;
         int min = Integer.MAX_VALUE;
-        while(l<=r){
+        while(l<=r){ // Same intution as searching in roated sorted array II and Min Element in Roated Sorted array I
             int m = (l+r)/2;
             if(nums[l]==nums[m] && nums[m]==nums[r]){
                 min = Math.min(min,nums[m]);
