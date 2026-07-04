@@ -10,11 +10,11 @@ class Solution {
                 return true;
             }
             else if(nums[m]==nums[l] && nums[m]==nums[r]){
-                boolean a = BS(nums,target,l,m-1);
-                boolean b = BS(nums,target,m+1,r);
+                boolean a = BS(nums,target,l,m-1);// for duplicates
                 if(a==true) return true;
-                else if(b==true) return true;
-                else return false;
+                boolean b = BS(nums,target,m+1,r);//for duplicates
+                if(b==true) return true;
+                return false;
             }
             else if(nums[m]>=nums[l]){
                 if(nums[m]>=target && target>=nums[l]){
