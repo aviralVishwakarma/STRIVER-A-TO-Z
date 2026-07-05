@@ -9,7 +9,7 @@ class Solution {
         return count ;
     }
     public int negativeNumber(int[] nums ,int l ,int r){
-        int lb = r + 1 ;
+        int lb = r + 1 ; // lower bound
         while(l<=r){
             int m = (l+r)/2;
             if(nums[m]<0){
