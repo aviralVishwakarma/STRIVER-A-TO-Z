@@ -5,7 +5,7 @@ class Solution {
         int sqrt = Integer.MIN_VALUE;
         while(l<=r){
             int m = r+(l-r)/2;
-            long n = (long)m*m;
+            long n = (long)m*m; // m^2 can be out of thr range of int
             if(n==x){
                 sqrt = m;
                 break;
