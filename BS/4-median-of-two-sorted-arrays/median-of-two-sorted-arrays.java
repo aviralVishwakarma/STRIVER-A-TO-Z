@@ -1,51 +1,33 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int i = 0;
-        int j = 0;
-        int len = nums1.length + nums2.length;
-        int ind2 = len / 2;
-        int ind1 = len / 2 - 1;
-        int count = 0;
-        int ind_el1 = -1;
-        int ind_el2 = -1;
-        while (i < nums1.length && j < nums2.length) {
-            if (nums1[i] < nums2[j]) {
-                if (count == ind2)
-                    ind_el2 = nums1[i];
-                if (count == ind1)
-                    ind_el1 = nums1[i];
-                count++;
-                i++;
-            } else {
-                if (count == ind2)
-                    ind_el2 = nums2[j];
-                if (count == ind1)
-                    ind_el1 = nums2[j];
-                count++;
-                j++;
+        int n = nums1.length;
+        int m = nums2.length;
+        if(n>m) return findMedianSortedArrays(nums2 , nums1);
+        int middle = (n + m + 1)/2;
+        int low = 0 ;
+        int high = n ;
+        while(low<=high){
+            int l1 = Integer.MIN_VALUE;
+            int l2 = Integer.MIN_VALUE;
+            int r1 = Integer.MAX_VALUE;
+            int r2 = Integer.MAX_VALUE;
+            int m1 = (low+high)/2;
+            int m2 = middle-m1;
+            if(m1<n) r1 = nums1[m1];
+            if(m2<m) r2 = nums2[m2];
+            if(m1-1>=0) l1 = nums1[m1-1];
+            if(m2-1>=0) l2 = nums2[m2-1];
+            if(l1<=r2 && l2<=r1){
+                if((n+m)%2==0){
+                    return ((double)Math.max(l1,l2)+ Math.min(r1,r2))/2;
+                }
+                else{
+                    return Math.max(l1,l2);
+                }
             }
+            else if(l1>r2) high = m1 - 1;
+            else low = m1 + 1;
         }
-        while (j < nums2.length) {
-            if (count == ind2)
-                ind_el2 = nums2[j];
-            if (count == ind1)
-                ind_el1 = nums2[j];
-            count++;
-            j++;
-        }
-        while (i < nums1.length) {
-            if (count == ind2)
-                ind_el2 = nums1[i];
-            if (count == ind1)
-                ind_el1 = nums1[i];
-            count++;
-            i++;
-        }
-        if((nums1.length+nums2.length)%2==0){
-            return ((double)ind_el1+ind_el2)/2;
-        }
-        else{
-            return ind_el2;
-        }
+        return -1;
     }
 }
