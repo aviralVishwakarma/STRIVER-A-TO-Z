@@ -31,3 +31,25 @@ class Solution {
 }
 
 //TC nlog(m) 
+//optimal
+class Solution {
+    public int rowWithMax1s(int[][] arr) {
+        int n = arr.length;
+        int m = arr[0].length;
+        int i = m-1 ;
+        int index = - 1;
+        for(int k = 0 ; k < n ; k++){
+        while (i >= 0 && arr[k][i] == 1) {
+                index = k;
+                i--;
+            }
+        }
+        if(m-i-1==0){
+            return -1;
+        }
+        else{
+            return index;
+        }
+    }
+}
+//TC : o(m+n)
