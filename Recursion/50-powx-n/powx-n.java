@@ -1,5 +1,28 @@
 class Solution {
     public double myPow(double x, int n) {
+        long N = n ;
+        if(N<0){
+            x = 1/x;
+            N = -N;
+        }
+        double ans = 1;
+        return pow(N,x,ans);
+    }
+    public double pow(long N , double x , double ans){
+        if(N==0) return ans;
+        if((N&1)==1){
+            ans *=x;
+        } 
+        x*=x;
+        N>>=1;
+        return pow(N,x,ans);
+    }
+}
+
+
+/*
+class Solution {
+    public double myPow(double x, int n) {
         long N = n;
         if (N < 0) {
             x = 1 / x;
@@ -17,6 +40,7 @@ class Solution {
 
     }
 }
+ */
 
 /*
 class Solution {
