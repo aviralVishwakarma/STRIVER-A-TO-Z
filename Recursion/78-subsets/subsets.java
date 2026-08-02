@@ -1,19 +1,20 @@
 class Solution {
-    List<List<Integer>> list = new ArrayList<>();
     public List<List<Integer>> subsets(int[] nums) {
-        int n = nums.length;
-        List<Integer> set = new ArrayList<>();
-        subSequence( set, n , 0 , nums);
-        return list;
-    }
-    public void subSequence(List<Integer> set , int n , int i , int nums[]){
-        if(i>=n){
-            list.add(new ArrayList<>(set));
-            return;
+        List<List<Integer>> ans = new ArrayList<>();
+        int n = 1<<(nums.length);
+        int len = nums.length;
+        for(int i = 0 ; i <1<<(nums.length); i++){
+            int j = 0 ;
+            int temp = n;
+            ArrayList<Integer> list = new ArrayList<>();
+            while(j<nums.length){
+                if((temp&1)==1) list.add(nums[j]);
+                j++;
+                temp = temp>>1;
+            }
+            ans.add(list);
+            n = n+1;
         }
-        set.add(nums[i]);
-        subSequence(set,n,i+1,nums);
-        set.remove(Integer.valueOf(nums[i])); 
-        subSequence(set,n,i+1,nums);
+        return ans;
     }
 }
