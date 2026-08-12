@@ -1,7 +1,6 @@
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
         int arr[] = new int[nums.length];
-        HashMap<Integer,Integer> map = new HashMap<>();
         Stack<Integer> st = new Stack<>();
         for(int i = 2*nums.length-1 ; i >=0 ; i--){
             while(!st.isEmpty() && st.peek()<=nums[i%nums.length]){
