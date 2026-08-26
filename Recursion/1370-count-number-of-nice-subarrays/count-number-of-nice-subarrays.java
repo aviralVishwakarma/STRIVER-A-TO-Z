@@ -9,9 +9,9 @@ class Solution {
         int sum = 0 ;
         int n = nums.length;
         while(j<n){
-            sum+=nums[j]%2==0? 0 : 1;
+            sum+=((nums[j])&1)==0? 0 : 1;
             while(k<sum){
-                sum-=nums[i++]%2==0? 0 : 1;
+                sum-=((nums[i++])&1)==0? 0 : 1;
             }
             count+=j-i+1;
             j++;
