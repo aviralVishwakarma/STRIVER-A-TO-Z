@@ -19,29 +19,21 @@ class Solution {
         Queue<TreeNode> q = new LinkedList<>();
         if(root==null) return list;
         q.offer(root);
+        int i = 0 ;
         while(!q.isEmpty()){
             int n = q.size();
             List<Integer> temp = new ArrayList<>();
+            Stack<Integer> st = new Stack(); 
             while(n-->0){
                 TreeNode node = q.poll();
-                temp.add(node.val);
+                if(i%2==0) temp.add(node.val);
+                if(i%2!=0) st.push(node.val);
                 if(node.left!=null) q.offer(node.left);
                 if(node.right!=null) q.offer(node.right);
             }
+            while(!st.isEmpty()) temp.add(st.pop());
             list.add(temp);
-        }
-        for(int i = 0 ; i < list.size(); i++){
-            if(i%2!=0){
-                int j = 0 ;
-                int k = list.get(i).size()-1;
-                while(j<k){
-                    int temp = list.get(i).get(j);
-                    list.get(i).set(j, list.get(i).get(k));
-                    list.get(i).set(k,temp) ;
-                    j++;
-                    k--;
-                }
-            }
+            i++;
         }
         return list;
     }
