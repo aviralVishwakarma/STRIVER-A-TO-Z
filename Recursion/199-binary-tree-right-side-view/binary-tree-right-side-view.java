@@ -22,10 +22,9 @@ class Solution {
         qn.offer(root);
         while (!qn.isEmpty()) {
             int n = qn.size();
-            while (n>0) {
+            for(int i = 0 ; i < n ; i++) {
                 TreeNode node = qn.poll();
-                n--;
-                if (n == 0)
+                if (i==n-1)
                     list.add(node.val);
                 if (node.left != null)
                     qn.offer(node.left);
