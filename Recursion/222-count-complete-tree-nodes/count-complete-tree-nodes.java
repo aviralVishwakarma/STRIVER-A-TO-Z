@@ -14,7 +14,6 @@
  * }
  */
 class Solution {
-    int ans = 0 ;
     public int countNodes(TreeNode root) {
         int left = left_height(root,0);
         int right = right_height(root,0);
@@ -23,10 +22,10 @@ class Solution {
     }
     public int left_height(TreeNode node , int h){
         if(node==null) return h;
-        return left_height(node.left,h+1);
+        return left_height(node.left,++h);
     }
     public int right_height(TreeNode node , int h){
         if(node==null) return h;
-        return right_height(node.right,h+1);
+        return right_height(node.right,++h);
     }
 }
